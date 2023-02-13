@@ -9,7 +9,7 @@ class EstateProperty(models.Model):
     _inherit = 'estate.property'
 
     def action_property_sold(self):
-        accountMove = self.env['account.move']
+        accountMove = self.env['account.move'].sudo()
         for record in self:
             _logger.error("\n$$$$$action_property_sold$$$$$$$$$$$\n")
             _logger.error(record.salesman.id, record.offer_ids.partner_id)
