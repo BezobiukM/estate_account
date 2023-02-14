@@ -10,9 +10,13 @@ class EstateProperty(models.Model):
 
     def action_property_sold(self):
         accountMove = self.env['account.move'].sudo()
+        self.env['account.move'].check_access_rights('write')
+        self.env['account.move'].check_access_rule('write')   
+        print("reached ".center(100, '='))
         for record in self:
             _logger.error("\n$$$$$action_property_sold$$$$$$$$$$$\n")
-            _logger.error(record.salesman.id, record.offer_ids.partner_id)
+            _logger.error(record.salesman.id)
+            _logger.info("reached ".center(100, '='))
             _logger.error("\n$$$$$action_property_sold_end$$$$$$$$$$$\n")
 
             accountMove.create({
@@ -38,6 +42,8 @@ class EstateProperty(models.Model):
                     })
                 ]
             })
+
         return super(EstateProperty, self).action_property_sold()
+    
     
      
