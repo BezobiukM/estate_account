@@ -1,13 +1,13 @@
 import logging
 
-from odoo import models
+from odoo import models, fields
 from odoo import Command
 
 _logger = logging.getLogger(__name__)
 
 class EstateProperty(models.Model):
     _inherit = 'estate.property'
-
+    accountMove = fields.Many2one('account.move', default=None)
     def action_property_sold(self):
         accountMove = self.env['account.move'].sudo()
         self.env['account.move'].check_access_rights('write')
@@ -42,6 +42,7 @@ class EstateProperty(models.Model):
                     })
                 ]
             })
+
 
         return super(EstateProperty, self).action_property_sold()
     
