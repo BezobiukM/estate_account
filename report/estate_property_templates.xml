@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_estate_property_offer" inherit_id="estate.report_property_offers">
+        <xpath expr="//div[@name='status']" position="after">
+            <div>
+                <strong>Invoice :</strong>
+                <span t-if="property.account_move_id" t-field="property.account_move_id"/>
+            </div>
+        </xpath>
+
+    </template>
+
+    <template id="report_users_work" inherit_id="estate.report_users_work">
+
+        <xpath expr="//div[@name='status']" position="after">
+            <div>
+                <strong>Invoice :</strong>
+                <span t-if="property.account_move_id" t-field="property.account_move_id"/>
+            </div>
+        </xpath>
+
+    </template>
+
+</odoo>
