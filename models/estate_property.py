@@ -8,7 +8,8 @@ _logger = logging.getLogger(__name__)
 class EstateProperty(models.Model):
     _inherit = 'estate.property'
     account_move_id = fields.Many2one('account.move', string="Invoice")
-    def action_property_sold(self):
+
+def action_property_sold(self):
         accountMove = self.env['account.move'].sudo()
         self.env['account.move'].check_access_rights('write')
         self.env['account.move'].check_access_rule('write')   
@@ -42,6 +43,7 @@ class EstateProperty(models.Model):
                     })
                 ]
             })
+
 
         return super(EstateProperty, self).action_property_sold()
     
