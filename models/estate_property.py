@@ -5,11 +5,13 @@ from odoo import Command
 
 _logger = logging.getLogger(__name__)
 
+
 class EstateProperty(models.Model):
     _inherit = 'estate.property'
     account_move_id = fields.Many2one('account.move', string="Invoice")
+
     def action_property_sold(self):
-        accountMove = self.env['account.move'].sudo()
+        account_move = self.env['account.move'].sudo()
         self.env['account.move'].check_access_rights('write')
         self.env['account.move'].check_access_rule('write')   
         print("reached ".center(100, '='))
@@ -19,7 +21,7 @@ class EstateProperty(models.Model):
             # _logger.info("reached ".center(100, '='))
             # _logger.error("\n$$$$$action_property_sold_end$$$$$$$$$$$\n")
 
-            record.account_move_id = accountMove.create({
+            record.account_move_id = account_move.create({
                 'partner_id': record.offer_ids.partner_id,
                 'move_type': 'out_invoice',
                 'invoice_origin': record.name,
