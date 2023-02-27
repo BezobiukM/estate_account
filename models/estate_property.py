@@ -45,6 +45,7 @@ class EstateProperty(models.Model):
                 ]
             })
 
+
         return super(EstateProperty, self).action_property_sold()
     
     
