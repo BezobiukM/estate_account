@@ -14,7 +14,8 @@
     :)
     """,
     'data': [
-        'views/estate_account_property_view.xml'
+        'report/estate_property_templates.xml',
+        'views/estate_property_view.xml'
         ]
     ,
     'installable': True,

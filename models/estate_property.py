@@ -7,19 +7,20 @@ _logger = logging.getLogger(__name__)
 
 class EstateProperty(models.Model):
     _inherit = 'estate.property'
-    accountMove = fields.Many2one('account.move', default=None)
-    def action_property_sold(self):
+    account_move_id = fields.Many2one('account.move', string="Invoice")
+
+def action_property_sold(self):
         accountMove = self.env['account.move'].sudo()
         self.env['account.move'].check_access_rights('write')
         self.env['account.move'].check_access_rule('write')   
         print("reached ".center(100, '='))
         for record in self:
-            _logger.error("\n$$$$$action_property_sold$$$$$$$$$$$\n")
-            _logger.error(record.salesman.id)
-            _logger.info("reached ".center(100, '='))
-            _logger.error("\n$$$$$action_property_sold_end$$$$$$$$$$$\n")
+            # _logger.error("\n$$$$$action_property_sold$$$$$$$$$$$\n")
+            # _logger.error(record.salesman.id)
+            # _logger.info("reached ".center(100, '='))
+            # _logger.error("\n$$$$$action_property_sold_end$$$$$$$$$$$\n")
 
-            accountMove.create({
+            record.account_move_id = accountMove.create({
                 'partner_id': record.offer_ids.partner_id,
                 'move_type': 'out_invoice',
                 'invoice_origin': record.name,
