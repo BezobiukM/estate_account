@@ -6,12 +6,11 @@
         'estate',
         'account'
         ],
-    'author': 'Bezobiuk M',
+    'author': 'Maria Bezobiuk',
     'category': 'Real Estate/Brokerage',
     'description': """
-    Description text
-    Real estate account link module app 
-    :)
+    The Real Estate Advertisement Invoicing module
+    Odoo provides an Invoicing module, once a property is set to ‘Sold’ in Real Estate application, an invoice is created in the Invoicing application.
     """,
     'data': [
         'report/estate_property_templates.xml',

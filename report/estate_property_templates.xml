@@ -3,8 +3,10 @@
     <template id="report_estate_property_offer" inherit_id="estate.report_property_offers">
         <xpath expr="//div[@name='status']" position="after">
             <div>
+                <t t-if="property.account_move_id">
                 <strong>Invoice :</strong>
-                <span t-if="property.account_move_id" t-field="property.account_move_id"/>
+                <span  t-field="property.account_move_id"/>
+                </t>
             </div>
         </xpath>
 
@@ -14,8 +16,10 @@
 
         <xpath expr="//div[@name='status']" position="after">
             <div>
+                <t t-if="property.account_move_id">
                 <strong>Invoice :</strong>
-                <span t-if="property.account_move_id" t-field="property.account_move_id"/>
+                <span  t-field="property.account_move_id"/>
+                </t>
             </div>
         </xpath>
 
